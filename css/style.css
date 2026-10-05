@@ -1,0 +1,231 @@
+/* ---------- 設計變數：想換色只改這裡 ---------- */
+:root {
+  --bg: #f4f6f8;
+    --surface: #ffffff;
+      --ink: #17202a;
+        --muted: #5b6672;
+          --line: #dde3e9;
+            --accent: #0e7c7b;
+              --accent-soft: #dcefec;
+                --accent-ink: #ffffff;
+                  --radius: 14px;
+                    --max: 1080px;
+                      color-scheme: light;
+                      }
+
+                      @media (prefers-color-scheme: dark) {
+                        :root {
+                            --bg: #0f1519;
+                                --surface: #172026;
+                                    --ink: #e8eef2;
+                                        --muted: #9aa8b3;
+                                            --line: #26323a;
+                                                --accent: #4cc2bd;
+                                                    --accent-soft: #163332;
+                                                        --accent-ink: #0b1a1a;
+                                                            color-scheme: dark;
+                                                              }
+                                                              }
+
+                                                              /* ---------- 基本重設 ---------- */
+                                                              *, *::before, *::after { box-sizing: border-box; }
+                                                              html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+                                                              body {
+                                                                margin: 0;
+                                                                  font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+                                                                    line-height: 1.75;
+                                                                      color: var(--ink);
+                                                                        background: var(--bg);
+                                                                          -webkit-font-smoothing: antialiased;
+                                                                          }
+                                                                          h1, h2, h3, p, ul { margin: 0; }
+                                                                          ul { padding: 0; list-style: none; }
+                                                                          a { color: inherit; text-decoration: none; }
+                                                                          :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+                                                                          .container { width: min(100% - 40px, var(--max)); margin-inline: auto; }
+                                                                          .section { padding-block: 72px; }
+                                                                          .section > h2 {
+                                                                            font-size: 1.75rem;
+                                                                              font-weight: 700;
+                                                                                letter-spacing: 0.02em;
+                                                                                  margin-bottom: 28px;
+                                                                                  }
+
+                                                                                  /* ---------- 導覽列 ---------- */
+                                                                                  .site-header {
+                                                                                    position: sticky;
+                                                                                      top: 0;
+                                                                                        z-index: 10;
+                                                                                          background: color-mix(in srgb, var(--bg) 88%, transparent);
+                                                                                            backdrop-filter: blur(10px);
+                                                                                              border-bottom: 1px solid var(--line);
+                                                                                              }
+                                                                                              .nav {
+                                                                                                display: flex;
+                                                                                                  align-items: center;
+                                                                                                    justify-content: space-between;
+                                                                                                      min-height: 64px;
+                                                                                                      }
+                                                                                                      .brand { font-weight: 900; font-size: 1.125rem; }
+                                                                                                      .nav-links { display: flex; gap: 28px; }
+                                                                                                      .nav-links a { color: var(--muted); font-weight: 500; transition: color .2s; }
+                                                                                                      .nav-links a:hover { color: var(--ink); }
+
+                                                                                                      /* ---------- Hero ---------- */
+                                                                                                      .hero {
+                                                                                                        display: grid;
+                                                                                                          grid-template-columns: 1.15fr 0.85fr;
+                                                                                                            gap: 48px;
+                                                                                                              align-items: center;
+                                                                                                                padding-block: 88px 64px;
+                                                                                                                }
+                                                                                                                .hero h1 {
+                                                                                                                  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+                                                                                                                    font-weight: 900;
+                                                                                                                      line-height: 1.2;
+                                                                                                                        letter-spacing: 0.01em;
+                                                                                                                        }
+                                                                                                                        .lead {
+                                                                                                                          margin-top: 20px;
+                                                                                                                            max-width: 34em;
+                                                                                                                              font-size: 1.125rem;
+                                                                                                                                color: var(--muted);
+                                                                                                                                }
+                                                                                                                                .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+                                                                                                                                .btn {
+                                                                                                                                  display: inline-block;
+                                                                                                                                    padding: 12px 24px;
+                                                                                                                                      border-radius: 999px;
+                                                                                                                                        font-weight: 700;
+                                                                                                                                          border: 1.5px solid transparent;
+                                                                                                                                            transition: transform .15s, background .2s;
+                                                                                                                                            }
+                                                                                                                                            .btn:hover { transform: translateY(-2px); }
+                                                                                                                                            .btn-primary { background: var(--accent); color: var(--accent-ink); }
+                                                                                                                                            .btn-ghost { border-color: var(--line); background: var(--surface); }
+
+                                                                                                                                            /* Hero 右側：模擬 AI 對話卡 */
+                                                                                                                                            .hero-visual {
+                                                                                                                                              padding: 28px;
+                                                                                                                                                border-radius: calc(var(--radius) + 8px);
+                                                                                                                                                  background:
+                                                                                                                                                      linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 28px 28px,
+                                                                                                                                                          linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 28px 28px,
+                                                                                                                                                              var(--accent-soft);
+                                                                                                                                                              }
+                                                                                                                                                              .prompt-card {
+                                                                                                                                                                display: grid;
+                                                                                                                                                                  gap: 12px;
+                                                                                                                                                                  }
+                                                                                                                                                                  .prompt-card p {
+                                                                                                                                                                    padding: 14px 18px;
+                                                                                                                                                                      border-radius: var(--radius);
+                                                                                                                                                                        font-size: 0.95rem;
+                                                                                                                                                                          line-height: 1.6;
+                                                                                                                                                                            box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+                                                                                                                                                                            }
+                                                                                                                                                                            .prompt-user {
+                                                                                                                                                                              justify-self: end;
+                                                                                                                                                                                max-width: 85%;
+                                                                                                                                                                                  background: var(--surface);
+                                                                                                                                                                                    border-bottom-right-radius: 4px;
+                                                                                                                                                                                    }
+                                                                                                                                                                                    .prompt-ai {
+                                                                                                                                                                                      justify-self: start;
+                                                                                                                                                                                        max-width: 90%;
+                                                                                                                                                                                          background: var(--accent);
+                                                                                                                                                                                            color: var(--accent-ink);
+                                                                                                                                                                                              border-bottom-left-radius: 4px;
+                                                                                                                                                                                              }
+
+                                                                                                                                                                                              /* ---------- 個人簡介 ---------- */
+                                                                                                                                                                                              .about-grid {
+                                                                                                                                                                                                display: grid;
+                                                                                                                                                                                                  grid-template-columns: 1.2fr 0.8fr;
+                                                                                                                                                                                                    gap: 40px;
+                                                                                                                                                                                                      align-items: start;
+                                                                                                                                                                                                      }
+                                                                                                                                                                                                      .about-grid > p { font-size: 1.0625rem; max-width: 36em; }
+                                                                                                                                                                                                      .facts {
+                                                                                                                                                                                                        display: grid;
+                                                                                                                                                                                                          gap: 14px;
+                                                                                                                                                                                                            padding: 24px;
+                                                                                                                                                                                                              background: var(--surface);
+                                                                                                                                                                                                                border: 1px solid var(--line);
+                                                                                                                                                                                                                  border-radius: var(--radius);
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                  .facts strong { display: block; font-size: 0.875rem; color: var(--accent); }
+
+                                                                                                                                                                                                                  /* ---------- 專案卡片 ---------- */
+                                                                                                                                                                                                                  .cards {
+                                                                                                                                                                                                                    display: grid;
+                                                                                                                                                                                                                      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                                                                                                                                                                                                                        gap: 24px;
+                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                        .card {
+                                                                                                                                                                                                                          display: flex;
+                                                                                                                                                                                                                            flex-direction: column;
+                                                                                                                                                                                                                              overflow: hidden;
+                                                                                                                                                                                                                                background: var(--surface);
+                                                                                                                                                                                                                                  border: 1px solid var(--line);
+                                                                                                                                                                                                                                    border-radius: var(--radius);
+                                                                                                                                                                                                                                      transition: transform .2s, border-color .2s;
+                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                      .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+                                                                                                                                                                                                                                      .card-thumb { aspect-ratio: 16 / 9; }
+                                                                                                                                                                                                                                      .thumb-a { background: linear-gradient(135deg, #0e7c7b, #8fd3c8); }
+                                                                                                                                                                                                                                      .thumb-b { background: linear-gradient(135deg, #3d5a80, #98c1d9); }
+                                                                                                                                                                                                                                      .thumb-c { background: linear-gradient(135deg, #5f6caf, #c3c9f0); }
+                                                                                                                                                                                                                                      .card-body { display: flex; flex-direction: column; gap: 10px; padding: 22px; flex: 1; }
+                                                                                                                                                                                                                                      .card h3 { font-size: 1.25rem; font-weight: 700; }
+                                                                                                                                                                                                                                      .card-body > p { color: var(--muted); font-size: 0.95rem; }
+                                                                                                                                                                                                                                      .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+                                                                                                                                                                                                                                      .tags li {
+                                                                                                                                                                                                                                        padding: 2px 12px;
+                                                                                                                                                                                                                                          font-size: 0.8125rem;
+                                                                                                                                                                                                                                            border-radius: 999px;
+                                                                                                                                                                                                                                              background: var(--accent-soft);
+                                                                                                                                                                                                                                                color: var(--accent);
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                .card-link { font-weight: 700; color: var(--accent); }
+                                                                                                                                                                                                                                                .card-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+                                                                                                                                                                                                                                                /* ---------- 頁尾 ---------- */
+                                                                                                                                                                                                                                                .site-footer {
+                                                                                                                                                                                                                                                  margin-top: 40px;
+                                                                                                                                                                                                                                                    padding-block: 56px 28px;
+                                                                                                                                                                                                                                                      background: var(--surface);
+                                                                                                                                                                                                                                                        border-top: 1px solid var(--line);
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        .footer-inner {
+                                                                                                                                                                                                                                                          display: flex;
+                                                                                                                                                                                                                                                            flex-wrap: wrap;
+                                                                                                                                                                                                                                                              gap: 24px;
+                                                                                                                                                                                                                                                                align-items: flex-end;
+                                                                                                                                                                                                                                                                  justify-content: space-between;
+                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                  .footer-title { font-size: 1.25rem; font-weight: 700; }
+                                                                                                                                                                                                                                                                  .footer-mail { color: var(--accent); font-weight: 500; }
+                                                                                                                                                                                                                                                                  .footer-mail:hover { text-decoration: underline; text-underline-offset: 4px; }
+                                                                                                                                                                                                                                                                  .footer-links { display: flex; gap: 20px; color: var(--muted); }
+                                                                                                                                                                                                                                                                  .footer-links a:hover { color: var(--ink); }
+                                                                                                                                                                                                                                                                  .copyright {
+                                                                                                                                                                                                                                                                    margin-top: 40px;
+                                                                                                                                                                                                                                                                      font-size: 0.8125rem;
+                                                                                                                                                                                                                                                                        color: var(--muted);
+                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                        /* ---------- 響應式 ---------- */
+                                                                                                                                                                                                                                                                        @media (max-width: 800px) {
+                                                                                                                                                                                                                                                                          .hero, .about-grid { grid-template-columns: 1fr; }
+                                                                                                                                                                                                                                                                            .hero { padding-block: 56px 40px; }
+                                                                                                                                                                                                                                                                              .section { padding-block: 52px; }
+                                                                                                                                                                                                                                                                                .nav-links { gap: 18px; font-size: 0.9375rem; }
+                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                @media (prefers-reduced-motion: reduce) {
+                                                                                                                                                                                                                                                                                  html { scroll-behavior: auto; }
+                                                                                                                                                                                                                                                                                    * { transition: none !important; }
+                                                                                                                                                                                                                                                                                    }
